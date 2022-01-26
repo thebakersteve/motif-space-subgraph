@@ -25,7 +25,10 @@
 		nano subgraph.yaml
 		paste subgraph.yaml updated as above
 	copy the abis from Asset and Listing repos to abi folder
-	yarn codegen & yarn build & yarn create-local & yarn deploy-local
+	yarn codegen
+	yarn build
+	yarn create-local
+	yarn deploy-local
 	note the subgraph endpoints: 
 		Queries (HTTP):     http://localhost:8000/subgraphs/name/motif-space-subgraph
 		Subscriptions (WS): http://localhost:8001/subgraphs/name/motif-space-subgraph
