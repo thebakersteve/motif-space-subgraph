@@ -1,12 +1,16 @@
+
 import { Space } from '../types/schema'
 import {
   Approval,
   ApprovalForAll,
-  Space as SpaceContract,
+  Space as SpaceContract, 
   TokenMetadataURIUpdated,
   TokenURIUpdated,
   Transfer,
 } from '../types/Space/Space'
+import {
+  Land 
+} from '../types/Land/Land'
 import { log } from '@graphprotocol/graph-ts'
 import {
   createSpace,
@@ -264,18 +268,17 @@ function handleMint(event: Transfer): void {
   let metadataHash = spaceContract.tokenMetadataHashes(tokenId)
 
   let isPublic = spaceContract.tokenIsPublicRecord(tokenId)
-  //let lands = spaceContract.tokenLands(tokenId)
+  let lands = spaceContract.tokenLandDetails(tokenId)
 
   // let foundLands = [];
 
-  // if (isPublic == true) {
+  //  if (isPublic == true) {
   //   for (let i = 0;  i < lands.length; i++) {
   //     var land = findLand(lands[i])
-  //     finalLands.push(land)
+  //     foundLands.push(land)
   //   } 
   // }
-
-
+ 
   let bidShares = fetchSpaceBidShares(tokenId, event.address)
 
   let space = createSpace(
@@ -288,13 +291,13 @@ function handleMint(event: Transfer): void {
     contentHash,
     metadataURI,
     metadataHash,
-    isPublic,
-    //foundLands,
     bidShares.creator,
     bidShares.owner,
     bidShares.prevOwner,
     event.block.timestamp,
-    event.block.number
+    event.block.number,
+    isPublic,
+    null
   )
 
   let transferId = tokenId

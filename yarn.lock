@@ -457,31 +457,26 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@motifdev/asset@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@motifdev/asset/-/asset-1.0.7.tgz#b7af0babcec1b0cb39004303cb3be5e3211a8327"
-  integrity sha512-Iv//Y59iEgnUK1v3BK5FaGJ2ZPBl+8KJN4/KsDrMWH6RzOoi9XrqPIqB5sOutcZ04bQgCjkkbSYZIUfHHg078Q==
+"@motif-foundation/asset@^1.0.6", "@motif-foundation/asset@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@motif-foundation/asset/-/asset-1.0.8.tgz#2ec2669b12862500898ffb5d5bc73239e66a4d3c"
+  integrity sha512-eAkYBWKtReIZe1TaEUYeSzMiA2qOMf/dAmUxWu78w06c/vYgyRR/7GkufFngmB+tpsGqSLfWVbAl5loIg7/lKQ==
   dependencies:
     ethers "^5.0.19"
     truffle-flattener "^1.5.0"
 
-"@motifdev/listing@1.0.7", "@motifdev/listing@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@motifdev/listing/-/listing-1.0.7.tgz#cf1e9cc8d04f079f47a3f7cf4062870b177b12b4"
-  integrity sha512-q0OdfZ7CLpt/AG7sgVGStngyMJ1NGQO06jHZU80KXSfApYWd6EPx/1sxLaFNYByRpx6nMsz5nFX2hpY5nvIFOA==
+"@motif-foundation/asset@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@motif-foundation/asset/-/asset-1.0.9.tgz#1e1879c5f6e381bb850853009d744197619575c7"
+  integrity sha512-2hufBYYvgrDCVMUlEu7Qgw4Y9e8zK9vdI/turtHhbDlAatUqDFmrKgBimEdK22UEwas0Wx1e/BdmZ0td6J34yg==
   dependencies:
-    "@motifdev/asset" "^1.0.7"
-    "@openzeppelin/contracts" "^3.2.0"
-    dotenv "^8.2.0"
-    fs-extra "^9.1.0"
-    minimist "^1.2.5"
-    moment "2.29.1"
-    solidity-coverage "^0.7.16"
+    ethers "^5.0.19"
+    truffle-flattener "^1.5.0"
 
-"@motifdev/metadata@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@motifdev/metadata/-/metadata-1.0.5.tgz#d6968dfd341845d724a0efd5fa98f1a65a85c673"
-  integrity sha512-rQcVvkt/wUrJgP6yXNJUrt45jOOEgpc179UdNHYMQKSN3kWiWAKEsaitygPcR9MPmYfzUg9NSSmPsJjx8bQzcA==
+"@motif-foundation/avatar-metadata@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@motif-foundation/avatar-metadata/-/avatar-metadata-1.0.1.tgz#5cb099f8c19f34373ea3084d8267121ae35aabc0"
+  integrity sha512-cA2oF8lRyZQ6ezRXk8qw3TmIqTz/FSukA8Z9k2NrLNLljKhRYB2rKYRju2H9iCfxCHTdL3vOv8iL7QNkZZbYng==
   dependencies:
     "@types/jsonschema" "^1.1.1"
     jsonschema "^1.4.0"
@@ -489,14 +484,51 @@
     tslib "^2.0.3"
     typescript "^4.1.3"
 
-"@motifdev/sdk@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@motifdev/sdk/-/sdk-1.0.9.tgz#5d5976363698e890fe5c6959660a17f62d88126f"
-  integrity sha512-xAWjbHGJGQcRvch78LwFnFYP9FHp2vfXNgdCIiZmciBq6/a1PncXJFWCWz1xsUw7MYO/UXLymdWkVdxkvtJG3A==
+"@motif-foundation/item-metadata@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@motif-foundation/item-metadata/-/item-metadata-1.0.2.tgz#5a2b9eb7e86770f93f712d25cdd8039b46400d87"
+  integrity sha512-IgR3qiVz6Gl/0eCYZaK1dzsvBYLzhAhtein0nMufWxOwFaTfUbutJjcoEmlaeidkjiOYOKPMnIYsdg/m2rPMwA==
   dependencies:
-    "@motifdev/asset" "^1.0.7"
-    "@motifdev/listing" "^1.0.7"
-    "@motifdev/metadata" "^1.0.5"
+    "@types/jsonschema" "^1.1.1"
+    jsonschema "^1.4.0"
+    ts-node "^9.1.1"
+    tslib "^2.0.3"
+    typescript "^4.1.3"
+
+"@motif-foundation/land-metadata@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@motif-foundation/land-metadata/-/land-metadata-1.0.1.tgz#5a029dd76e6e79ac7afd1a04e34afa93114d3745"
+  integrity sha512-wPlyT5wZY2IY3AHl4unoV6dUl8H1aG0lM2F5xnmtt4bQ6ypJ0lDpLMfB3zZdpn9H/xAw0UsYZKYWs21QyZqMSA==
+  dependencies:
+    "@types/jsonschema" "^1.1.1"
+    jsonschema "^1.4.0"
+    ts-node "^9.1.1"
+    tslib "^2.0.3"
+    typescript "^4.1.3"
+
+"@motif-foundation/listing@1.0.8", "@motif-foundation/listing@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@motif-foundation/listing/-/listing-1.0.8.tgz#da51b5d0322ba3f7c758a31c60372926c1ee0d0a"
+  integrity sha512-+i4jOQezo0kBOBJvQgN38WV0rnSlEbLkmrHQyX0dWUob2lzcdf4j4/NS1SZDfZ/WLEXfZfbLG0UjVFJkh2dX4Q==
+  dependencies:
+    "@motif-foundation/asset" "^1.0.8"
+    "@openzeppelin/contracts" "^3.2.0"
+    dotenv "^8.2.0"
+    fs-extra "^9.1.0"
+    minimist "^1.2.5"
+    solidity-coverage "^0.7.16"
+
+"@motif-foundation/sdk@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@motif-foundation/sdk/-/sdk-1.0.13.tgz#5f954653b0093305a43bd9142a0f3d75b5b206a5"
+  integrity sha512-jQhlKMzloP+sKDq9AIDsmB5xvw6jLEy2CF/Up2jkGng32aanl27H88CGxNjGjuCdOK+9oPHtG8eZQxVRTpBKFw==
+  dependencies:
+    "@motif-foundation/asset" "^1.0.6"
+    "@motif-foundation/avatar-metadata" "^1.0.1"
+    "@motif-foundation/item-metadata" "^1.0.2"
+    "@motif-foundation/land-metadata" "^1.0.1"
+    "@motif-foundation/listing" "^1.0.8"
+    "@motif-foundation/space-metadata" "^1.0.1"
     axios "^0.21.1"
     eth-sig-util "^3.0.0"
     ethereumjs-util "^7.0.7"
@@ -505,6 +537,17 @@
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
     ts-node "^9.1.1"
+
+"@motif-foundation/space-metadata@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@motif-foundation/space-metadata/-/space-metadata-1.0.1.tgz#2e326ab8461b0a40998d0412c820c0bd52a7784e"
+  integrity sha512-kkBfBFYgzaA7ZXxe7BKIoZuuROhmjdy57R18Mo8NxUBkVORx1I00dJr+a+XWT/nzxufexxpoi38H0Xd42oSt+w==
+  dependencies:
+    "@types/jsonschema" "^1.1.1"
+    jsonschema "^1.4.0"
+    ts-node "^9.1.1"
+    tslib "^2.0.3"
+    typescript "^4.1.3"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -4265,11 +4308,6 @@ mock-fs@^4.1.0:
   version "4.14.0"
   resolved "https://registry.yarnpkg.com/mock-fs/-/mock-fs-4.14.0.tgz#ce5124d2c601421255985e6e94da80a7357b1b18"
   integrity sha512-qYvlv/exQ4+svI3UOvPUpLDF0OMX5euvUH0Ny4N5QyRyhNdgAgUrVH3iUINSzEPLvx0kbo/Bp28GJKIqvE7URw==
-
-moment@2.29.1:
-  version "2.29.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
-  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
 ms@2.0.0:
   version "2.0.0"

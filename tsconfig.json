@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "strict": false,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "target": "es5",
+    "lib": [
+      "dom"
+    ],
+    "allowJs": true, 
+    "strict": true, 
     "outDir": "dist"
   },
   "include": [
-    "@motivdev/asset"
+    "@motiv-foundation/asset"
   ]
 }

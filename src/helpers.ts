@@ -6,14 +6,14 @@ import {
     Currency,
     InactiveAsk,
     InactiveBid,
-    InactiveReserveListBid,
+    InactiveReserveListingBid,
     Space,
-    ReserveList,
-    ReserveListBid,
+    ReserveListing,
+    ReserveListingBid,
     Transfer,
     URIUpdate,
     User,
-    Land 
+    Land
 } from '../types/schema'
 import { Space as SpaceContract } from '../types/Space/Space'
 import { SpaceExchange as SpaceExchangeContract } from '../types/SpaceExchange/SpaceExchange'
@@ -51,12 +51,6 @@ export function findOrCreateUser(id: string): User {
     }
 
     return user as User
-}
-
- 
-export function findLand(id: string): Land {
-    let land = Land.load(id)
-    return land as Land
 }
 
 /**
@@ -123,6 +117,13 @@ export function fetchSpaceBidShares(tokenId: BigInt, spaceAddress: Address): Bid
     )
 }
 
+export function fetchSpaceAddress(tokenId: BigInt, spaceExchangeAddress: Address): string {
+    let spaceExchange = SpaceExchangeContract.bind(spaceExchangeAddress)
+    let spaceAddress = spaceExchange.spaceContract()
+    return spaceAddress.toHexString()
+}
+
+
 /**
  * Fetch the `decimals` from the specified ERC20 contract on the blockchain
  * @param currencyAddress
@@ -164,6 +165,12 @@ export function fetchCurrencySymbol(currencyAddress: Address): string {
     return symbolValue
 }
 
+export function findLand(id: string): Land {
+    let land = Land.load(id)
+    return land as Land
+}
+
+
 /**
  * Fetch the `name` of the specified ERC20 contract on the blockchain
  * @param currencyAddress
@@ -189,6 +196,7 @@ export function fetchCurrencyName(currencyAddress: Address): string {
     return nameValue
 }
 
+ 
 /**
  * Create New Space Entity
  * @param id
@@ -199,8 +207,6 @@ export function fetchCurrencyName(currencyAddress: Address): string {
  * @param contentHash
  * @param metadataURI
  * @param metadataHash
- * @param isPublic
- * @param lands
  * @param creatorBidShare
  * @param ownerBidShare
  * @param prevOwnerBidShare
@@ -216,31 +222,38 @@ export function createSpace(
     contentURI: string,
     contentHash: Bytes,
     metadataURI: string,
-    metadataHash: Bytes,
-    isPublic: boolean,
-    //lands: Land,
+    metadataHash: Bytes,  
     creatorBidShare: BigInt,
     ownerBidShare: BigInt,
     prevOwnerBidShare: BigInt,
     createdAtTimestamp: BigInt,
-    createdAtBlockNumber: BigInt
+    createdAtBlockNumber: BigInt,
+    isPublic: boolean,
+    lands: Array<string>
 ): Space {
-    let space = new Space(id)
+
+    let space = new Space(id) 
     space.owner = owner.id
-    space.transactionHash = transactionHash
+    space.transactionHash = transactionHash 
     space.creator = creator.id
     space.prevOwner = prevOwner.id
     space.contentURI = contentURI
     space.contentHash = contentHash
     space.metadataURI = metadataURI
-    space.metadataHash = metadataHash
-    space.isPublic = isPublic
-    //space.lands = lands
+    space.metadataHash = metadataHash  
     space.creatorBidShare = creatorBidShare
     space.ownerBidShare = ownerBidShare
     space.prevOwnerBidShare = prevOwnerBidShare
     space.createdAtTimestamp = createdAtTimestamp
     space.createdAtBlockNumber = createdAtBlockNumber
+    space.isPublic = isPublic 
+
+
+    //let _lands = Space.tokenLandDetails(tokenId)
+
+
+
+    space.lands = null; //[_lands.toString()]
 
     space.save()
     return space
@@ -471,11 +484,11 @@ export function createURIUpdate(
     return uriUpdate
 }
 
-export function createReserveList(
+export function createReserveListing(
     id: string,
     transactionHash: string,
     tokenId: BigInt,
-    tokenContract: string,
+    tokenContract: string, 
     space: Space | null,
     startsAt: BigInt,
     duration: BigInt,
@@ -487,60 +500,60 @@ export function createReserveList(
     createdAtBlockNumber: BigInt,
     tokenOwner: User,
     intermediary: User
-): ReserveList {
-    let reserveList = new ReserveList(id)
+): ReserveListing {
+    let reserveListing = new ReserveListing(id)
 
-    reserveList.tokenId = tokenId
-    reserveList.transactionHash = transactionHash
-    reserveList.tokenContract = tokenContract
-    reserveList.token = tokenContract.concat('-').concat(tokenId.toString())
-    reserveList.space = space ? space.id : null
-    reserveList.approved = false
-    reserveList.startsAt = startsAt
-    reserveList.duration = duration
-    reserveList.firstBidTime = BigInt.fromI32(0)
-    reserveList.approvedTimestamp = null
-    reserveList.listPrice = listPrice
-    reserveList.listType = listType 
-    reserveList.intermediaryFeePercentage = intermediaryFeePercentage
-    reserveList.tokenOwner = tokenOwner.id
-    reserveList.intermediary = intermediary.id
-    reserveList.listCurrency = listCurrency.id
-    reserveList.status = 'Pending'
-    reserveList.createdAtTimestamp = createdAtTimestamp
-    reserveList.createdAtBlockNumber = createdAtBlockNumber
+    reserveListing.tokenId = tokenId
+    reserveListing.transactionHash = transactionHash
+    reserveListing.tokenContract = tokenContract 
+    reserveListing.token = tokenContract.concat('-').concat(tokenId.toString())
+    reserveListing.space = space ? space.id : null
+    reserveListing.approved = false
+    reserveListing.startsAt = startsAt
+    reserveListing.duration = duration
+    reserveListing.firstBidTime = BigInt.fromI32(0)
+    reserveListing.approvedTimestamp = null
+    reserveListing.listPrice = listPrice
+    reserveListing.listType = listType 
+    reserveListing.intermediaryFeePercentage = intermediaryFeePercentage
+    reserveListing.tokenOwner = tokenOwner.id
+    reserveListing.intermediary = intermediary.id
+    reserveListing.listCurrency = listCurrency.id
+    reserveListing.status = 'Pending'
+    reserveListing.createdAtTimestamp = createdAtTimestamp
+    reserveListing.createdAtBlockNumber = createdAtBlockNumber
 
-    reserveList.save()
+    reserveListing.save()
 
-    return reserveList
+    return reserveListing
 }
 
-export function setReserveListFirstBidTime(list: ReserveList, time: BigInt): void {
-    list.firstBidTime = time
-    list.expectedEndTimestamp = list.duration.plus(time)
-    list.save()
+export function setReserveListingFirstBidTime(listing: ReserveListing, time: BigInt): void {
+    listing.firstBidTime = time
+    listing.expectedEndTimestamp = listing.duration.plus(time)
+    listing.save()
 }
 
-export function handleReserveListExtended(list: ReserveList, duration: BigInt): void {
-    list.duration = duration
-    list.expectedEndTimestamp = list.firstBidTime.plus(duration)
-    list.save()
+export function handleReserveListingExtended(listing: ReserveListing, duration: BigInt): void {
+    listing.duration = duration
+    listing.expectedEndTimestamp = listing.firstBidTime.plus(duration)
+    listing.save()
 }
 
-export function createReserveListBid(
+export function createReserveListingBid(
     id: string,
     transactionHash: string,
-    list: ReserveList,
+    listing: ReserveListing,
     amount: BigInt,
     createdAtTimestamp: BigInt,
     createdAtBlockNumber: BigInt,
     bidder: User
-): ReserveListBid {
-    let bid = new ReserveListBid(id)
+): ReserveListingBid {
+    let bid = new ReserveListingBid(id)
 
     log.warning('Creating active bid with id {}', [id])
 
-    bid.reserveList = list.id
+    bid.reserveListing = listing.id
     bid.transactionHash = transactionHash
     bid.amount = amount
     bid.bidder = bidder.id
@@ -550,19 +563,19 @@ export function createReserveListBid(
 
     bid.save()
 
-    list.currentBid = bid.id
-    list.save()
+    listing.currentBid = bid.id
+    listing.save()
 
     return bid
 }
 
 // Create an inactive bid based off of the current highest bid, and delete the active bid
-export function handleBidReplaced(list: ReserveList, timestamp: BigInt, blockNumber: BigInt, winningBid: boolean = false): void {
-    let activeBid = ReserveListBid.load(list.currentBid) as ReserveListBid
-    let inactiveBid = new InactiveReserveListBid(activeBid.id)
+export function handleBidReplaced(listing: ReserveListing, timestamp: BigInt, blockNumber: BigInt, winningBid: boolean = false): void {
+    let activeBid = ReserveListingBid.load(listing.currentBid) as ReserveListingBid
+    let inactiveBid = new InactiveReserveListingBid(activeBid.id)
 
-    log.info('setting reserve list', [])
-    inactiveBid.reserveList = activeBid.reserveList
+    log.info('setting reserve listing', [])
+    inactiveBid.reserveListing = activeBid.reserveListing
     inactiveBid.transactionHash = activeBid.transactionHash
     log.info('setting amount: {}', [activeBid.amount.toString()])
     inactiveBid.amount = activeBid.amount
@@ -581,14 +594,14 @@ export function handleBidReplaced(list: ReserveList, timestamp: BigInt, blockNum
 
     inactiveBid.save()
 
-    store.remove('ReserveListBid', activeBid.id)
+    store.remove('ReserveListingBid', activeBid.id)
 }
 
-export function handleFinishedList(list: ReserveList, timestamp: BigInt, blockNumber: BigInt, canceledList: boolean = false): void {
-    list.finalizedAtTimestamp = timestamp
-    list.finalizedAtBlockNumber = blockNumber
-    list.status = canceledList ? 'Canceled' : 'Finished'
-    list.save()
+export function handleFinishedListing(listing: ReserveListing, timestamp: BigInt, blockNumber: BigInt, canceledListing: boolean = false): void {
+    listing.finalizedAtTimestamp = timestamp
+    listing.finalizedAtBlockNumber = blockNumber
+    listing.status = canceledListing ? 'Canceled' : 'Finished'
+    listing.save()
 }
 
 function isNullEthValue(value: string): boolean {

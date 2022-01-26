@@ -72,7 +72,7 @@ type Space @entity {
   transfers: [Transfer!] @derivedFrom(field: "space")
 
   "The ReserveLists of the Space"
-  reserveLists: [ReserveList!] @derivedFrom(field: "space")
+  reserveListing: [ReserveListing!] @derivedFrom(field: "space")
 }
 
 type User @entity {
@@ -334,13 +334,13 @@ type URIUpdate @entity {
   createdAtBlockNumber: BigInt!
 }
 
-enum ReserveListBidType {
+enum ReserveListingBidType {
   Active
   Refunded
   Final
 }
 
-type ReserveListBid @entity {
+type ReserveListingBid @entity {
   "<listId>-<txHash>-<logIndex>"
   id: ID!
 
@@ -348,7 +348,7 @@ type ReserveListBid @entity {
   transactionHash: String!
 
   "The Reserve list associated with the Bid"
-  reserveList: ReserveList!
+  reserveListing: ReserveListing!
 
   "The amount of the Bid"
   amount: BigInt!
@@ -357,7 +357,7 @@ type ReserveListBid @entity {
   bidder: User!
 
   "The type of bid (active, refunded, final)"
-  bidType: ReserveListBidType!
+  bidType: ReserveListingBidType!
 
   "The timestamp of the block the Bid was created in"
   createdAtTimestamp: BigInt!
@@ -366,7 +366,7 @@ type ReserveListBid @entity {
   createdAtBlockNumber: BigInt!
 }
 
-type InactiveReserveListBid @entity {
+type InactiveReserveListingBid @entity {
   "<listId>-<txHash>-<logIndex>"
   id: ID!
 
@@ -374,7 +374,7 @@ type InactiveReserveListBid @entity {
   transactionHash: String!
 
   "The Reserve list associated with the Bid"
-  reserveList: ReserveList!
+  reserveListing: ReserveListing!
 
   "The amount of the Bid"
   amount: BigInt!
@@ -383,7 +383,7 @@ type InactiveReserveListBid @entity {
   bidder: User!
 
   "The type of bid (active, refunded, final)"
-  bidType: ReserveListBidType!
+  bidType: ReserveListingBidType!
 
   "The timestamp of the block the bid was inactivated at (via outbid, cancellation, winning bid)"
   bidInactivatedAtTimestamp: BigInt!
@@ -397,14 +397,14 @@ type InactiveReserveListBid @entity {
   "The number of the block the Bid was created in"
   createdAtBlockNumber: BigInt!
 }
-enum ReserveListStatus {
+enum ReserveListingStatus {
   Pending
   Active
   Canceled
   Finished
 }
 
-type ReserveList @entity {
+type ReserveListing @entity {
   "ID of the list from contract, autoincrementing int"
   id: ID!
 
@@ -413,6 +413,8 @@ type ReserveList @entity {
 
   "The originating token contract for this list"
   tokenContract: String!
+
+ 
 
   "The token ID for this list"
   tokenId: BigInt!
@@ -456,13 +458,13 @@ type ReserveList @entity {
   "The address of the ERC-20 currency to run the list with, or 0x0 for ETH"
   listCurrency: Currency!
 
-  status: ReserveListStatus!
+  status: ReserveListingStatus!
 
   "The current bid on this list"
-  currentBid: ReserveListBid
+  currentBid: ReserveListingBid
 
   "The previous bids on this list"
-  previousBids: [InactiveReserveListBid!]  @derivedFrom(field: "reserveList")
+  previousBids: [InactiveReserveListingBid!]  @derivedFrom(field: "reserveListing")
 
   "The time the list was approved"
   approvedTimestamp: BigInt
@@ -482,4 +484,3 @@ type ReserveList @entity {
   "The block number at which the list end function was called"
   finalizedAtBlockNumber: BigInt
 }
-
