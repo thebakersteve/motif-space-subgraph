@@ -297,7 +297,7 @@ function handleMint(event: Transfer): void {
     event.block.timestamp,
     event.block.number,
     isPublic,
-    null
+    lands
   )
 
   let transferId = tokenId

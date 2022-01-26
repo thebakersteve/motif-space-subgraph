@@ -229,7 +229,7 @@ export function createSpace(
     createdAtTimestamp: BigInt,
     createdAtBlockNumber: BigInt,
     isPublic: boolean,
-    lands: Array<string>
+    lands: Array<BigInt>
 ): Space {
 
     let space = new Space(id) 
@@ -247,14 +247,8 @@ export function createSpace(
     space.createdAtTimestamp = createdAtTimestamp
     space.createdAtBlockNumber = createdAtBlockNumber
     space.isPublic = isPublic 
-
-
-    //let _lands = Space.tokenLandDetails(tokenId)
-
-
-
-    space.lands = null; //[_lands.toString()]
-
+    space.lands = lands 
+ 
     space.save()
     return space
 }

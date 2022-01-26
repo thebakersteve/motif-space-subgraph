@@ -33,7 +33,7 @@ type Space @entity {
   isPublic: Boolean!
 
   "The lands of space"
-  lands: [Land!]
+  lands: [BigInt!]
 
   "The bid share for the current owner of the Space"
   ownerBidShare: BigInt!
