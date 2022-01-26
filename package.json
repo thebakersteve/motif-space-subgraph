@@ -2,12 +2,12 @@
   "name": "motif-space-subgraph",
   "version": "1.0.0",
   "scripts": {
-    "create-graph": "graph create motifdev/motif-space-subgraph --node https://api.thegraph.com/deploy/",
-    "create-local": "graph create motifdev/motif-space-subgraph --node http://127.0.0.1:8020",
+    "create-graph": "graph create motif-foundation/motif-space-subgraph --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create motif-foundation/motif-space-subgraph --node http://127.0.0.1:8020",
     "codegen": "graph codegen --output-dir types",
     "build": "graph build",
-    "deploy": "graph deploy motifdev/motif-space-subgraph --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
-    "deploy-local": "graph deploy motifdev/motif-space-subgraph --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
+    "deploy": "graph deploy motif-foundation/motif-space-subgraph --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-local": "graph deploy motif-foundation/motif-space-subgraph --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
   },
   "devDependencies": {
     "@ethersproject/providers": "^5.0.16",
@@ -31,6 +31,6 @@
   "dependencies": {
     "@motif-foundation/listing": "1.0.8",
     "@motif-foundation/asset": "^1.0.9",
-    "@motif-foundation/sdk": "^1.0.13"
+    "@motif-foundation/sdk": "^1.0.14"
   } 
 }

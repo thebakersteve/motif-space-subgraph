@@ -1,6 +1,6 @@
 specVersion: 0.0.3
 description: Motif Space Subgraph
-repository: https://github.com/motifdev/motif-space-subgraph
+repository: https://github.com/motif-foundation/motif-space-subgraph
 schema:
   file: ./schema.graphql
 dataSources:
