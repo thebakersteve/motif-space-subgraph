@@ -8,9 +8,6 @@ import {
   TokenURIUpdated,
   Transfer,
 } from '../types/Space/Space'
-import {
-  Land 
-} from '../types/Land/Land'
 import { log } from '@graphprotocol/graph-ts'
 import {
   createSpace,
@@ -269,15 +266,6 @@ function handleMint(event: Transfer): void {
 
   let isPublic = spaceContract.tokenIsPublicRecord(tokenId)
   let lands = spaceContract.tokenLandDetails(tokenId)
-
-  // let foundLands = [];
-
-  //  if (isPublic == true) {
-  //   for (let i = 0;  i < lands.length; i++) {
-  //     var land = findLand(lands[i])
-  //     foundLands.push(land)
-  //   } 
-  // }
  
   let bidShares = fetchSpaceBidShares(tokenId, event.address)
 
