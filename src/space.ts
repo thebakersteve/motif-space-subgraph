@@ -266,6 +266,7 @@ function handleMint(event: Transfer): void {
 
   let isPublic = spaceContract.tokenIsPublicRecord(tokenId)
   let lands = spaceContract.tokenLandDetails(tokenId)
+  let pin = spaceContract.tokenPinRecord(tokenId)
  
   let bidShares = fetchSpaceBidShares(tokenId, event.address)
 
@@ -285,7 +286,8 @@ function handleMint(event: Transfer): void {
     event.block.timestamp,
     event.block.number,
     isPublic,
-    lands
+    lands,
+    pin
   )
 
   let transferId = tokenId

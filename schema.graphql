@@ -32,6 +32,9 @@ type Space @entity {
   "The publicity of space"
   isPublic: Boolean!
 
+  "Pin code of space"
+  pin: String!
+
   "The lands of space"
   lands: [BigInt!]
 

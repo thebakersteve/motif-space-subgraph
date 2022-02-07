@@ -229,7 +229,8 @@ export function createSpace(
     createdAtTimestamp: BigInt,
     createdAtBlockNumber: BigInt,
     isPublic: boolean,
-    lands: Array<BigInt>
+    lands: Array<BigInt>,
+    pin: string
 ): Space {
 
     let space = new Space(id) 
@@ -248,6 +249,7 @@ export function createSpace(
     space.createdAtBlockNumber = createdAtBlockNumber
     space.isPublic = isPublic 
     space.lands = lands 
+    space.pin = pin 
  
     space.save()
     return space
