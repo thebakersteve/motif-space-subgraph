@@ -8,9 +8,9 @@ dataSources:
     name: Space
     network: motif
     source:
-      address: "0xcd20FE8842D34c9e75e1358D32ef28B968AFb0F5"
+      address: "0x151bf26BC39A8Df18C7E4ffC23c66847e6Bf8406"
       abi: Space
-      startBlock: 57961
+      startBlock: 257
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -38,9 +38,9 @@ dataSources:
     name: SpaceExchange
     network: motif
     source:
-      address: "0x09A9C58b114D60f74Bc439B63CbF373B94D028bC"
+      address: "0x5F8931136E1f727ba3Bb47A55BF52711248a8053"
       abi: SpaceExchange
-      startBlock: 57961
+      startBlock: 257
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -75,9 +75,9 @@ dataSources:
     name: SpaceListing
     network: motif
     source:
-      address: "0x25a7D9c5052C98662fdDeC4D0641628958d03b5A"
+      address: "0x6bc5872A937f4659996e4071bF2bd1D0f06D95eE"
       abi: SpaceListing
-      startBlock: 57961
+      startBlock: 257
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
