@@ -27,10 +27,7 @@ type Space @entity {
   contentURI: String!
 
   "The uri of the metadata"
-  metadataURI: String!
-
-  "The publicity of space"
-  isPublic: Boolean!
+  metadataURI: String! 
 
   "Pin code of space"
   pin: String!

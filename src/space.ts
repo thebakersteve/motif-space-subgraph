@@ -263,8 +263,7 @@ function handleMint(event: Transfer): void {
 
   let contentHash = spaceContract.tokenContentHashes(tokenId)
   let metadataHash = spaceContract.tokenMetadataHashes(tokenId)
-
-  let isPublic = spaceContract.tokenIsPublicRecord(tokenId)
+ 
   let lands = spaceContract.tokenLandDetails(tokenId)
   let pin = spaceContract.tokenPinRecord(tokenId)
  
@@ -284,8 +283,7 @@ function handleMint(event: Transfer): void {
     bidShares.owner,
     bidShares.prevOwner,
     event.block.timestamp,
-    event.block.number,
-    isPublic,
+    event.block.number, 
     lands,
     pin
   )

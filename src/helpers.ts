@@ -228,7 +228,6 @@ export function createSpace(
     prevOwnerBidShare: BigInt,
     createdAtTimestamp: BigInt,
     createdAtBlockNumber: BigInt,
-    isPublic: boolean,
     lands: Array<BigInt>,
     pin: string
 ): Space {
@@ -247,7 +246,6 @@ export function createSpace(
     space.prevOwnerBidShare = prevOwnerBidShare
     space.createdAtTimestamp = createdAtTimestamp
     space.createdAtBlockNumber = createdAtBlockNumber
-    space.isPublic = isPublic 
     space.lands = lands 
     space.pin = pin 
  
