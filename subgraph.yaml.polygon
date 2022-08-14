@@ -10,7 +10,7 @@ dataSources:
     source:
       address: "0x4526f3877D3dC6A7282a92Cde3A58F573d1580Bd"
       abi: Space
-      startBlock: 30964800
+      startBlock: 31872120
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -40,7 +40,7 @@ dataSources:
     source:
       address: "0xfA954e96958C9D54d36A9b6249f707B6E25880f2"
       abi: SpaceExchange
-      startBlock: 30964800
+      startBlock: 31872120
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -77,7 +77,7 @@ dataSources:
     source:
       address: "0xD1039c0C1a3BB42fA2b0aee727fBF7F14FA9FA7e"
       abi: SpaceListing
-      startBlock: 30964800
+      startBlock: 31872120
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
