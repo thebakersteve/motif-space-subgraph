@@ -8,7 +8,7 @@ dataSources:
     name: Space
     network: motiftest
     source:
-      address: "0xBC21c597Aa93198061573867C2211E273054d6e3"
+      address: "0xB30465E11a4078d243F95b74CF6AAc3c54dc5D00"
       abi: Space
       startBlock: 1
     mapping:
@@ -38,7 +38,7 @@ dataSources:
     name: SpaceExchange
     network: motiftest
     source:
-      address: "0xECC4D0052b30df1ab0A5595E77d05227990B2FaB"
+      address: "0x7C60f55E4f14b0187d31cE87f8823aC8bE09e4Ed"
       abi: SpaceExchange
       startBlock: 1
     mapping:
@@ -75,7 +75,7 @@ dataSources:
     name: SpaceListing
     network: motiftest
     source:
-      address: "0x3E2A635e9b90535313bde2B15444e6c482E50EBD"
+      address: "0x487eeFE9eA3929Add875d57dd7dE15b334E93911"
       abi: SpaceListing
       startBlock: 1
     mapping:
